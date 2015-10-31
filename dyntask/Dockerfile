@@ -31,7 +31,7 @@ RUN rm -fr /tmp/dyntask
 
 
 
-RUN dyntask-init -w /dyndoc-proj -d pdflatex
+RUN dyntask-init default /dyndoc-proj:pdflatex
 
 
 
