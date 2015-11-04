@@ -27,6 +27,8 @@ WORKDIR dyntask-ruby
 
 RUN rake docker
 
+RUN mkdir -p ~/.dyntask && cp -r share ~/.dyntask
+
 WORKDIR /tmp/dyntask
 
 RUN git clone https://github.com/rcqls/dyndoc-ruby-exec.git 
@@ -40,6 +42,15 @@ RUN rm -fr /tmp/dyntask
 
 
 RUN dyntask-init default /dyndoc-proj:pdflatex
+
+
+RUN apt-get -y locales
+
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+&& locale-gen en_US.utf-8 \
+&& /usr/sbin/update-locale LANG=en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
 
 
 
