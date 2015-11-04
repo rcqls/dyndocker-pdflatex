@@ -44,7 +44,7 @@ RUN rm -fr /tmp/dyntask
 RUN dyntask-init default /dyndoc-proj:pdflatex
 
 
-RUN apt-get -y locales
+RUN apt-get install -y locales
 
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 && locale-gen en_US.utf-8 \
